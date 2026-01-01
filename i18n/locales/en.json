@@ -1,0 +1,136 @@
+{
+  "nav": {
+    "home": "Home",
+    "brand": "Brand",
+    "products": "Products",
+    "craftsmanship": "Craftsmanship",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Wood as Medium, Minimalist Aesthetics",
+    "subtitle": "Return to nature, touch the pure texture"
+  },
+  "brand": {
+    "title": "Heritage of Craftsmanship, Soul of Nature",
+    "desc1": "Foshan Jincu Furniture Co., Ltd. was founded in 2008, originating from a craftsmanship-oriented factory established in 2004. Based in Lecong, Foshan—the \"Furniture Capital of China\"—we have dedicated two decades to the foodservice and hospitality furniture industry, growing into an industry leader integrating R&D, production, and sales.",
+    "desc2": "We operate a 30,000㎡ modern production base and a 5,000㎡ immersive showroom. Equipped with international machinery, staffed by experienced artisans, and driven by refined management, we ensure every product meets the highest standards of excellence. Our furniture is exported worldwide, serving over 3,000 chain brands annually with tailored solutions, and enjoys an 80% customer repurchase rate. Our philosophy: Win-win cooperation, customer first.",
+    "stats": {
+      "years": "Years of Focus",
+      "base_area": "Production Base",
+      "clients": "Chain Brands Served",
+      "repurchase": "Repurchase Rate"
+    }
+  },
+  "products": {
+    "title": "Product Center",
+    "subtitle": "Not just furniture, but art",
+    "page_title": "All Products",
+    "page_subtitle": "Explore our complete collection of handcrafted furniture, designed to bring nature into your home.",
+    "categories": {
+      "all": "All Series",
+      "chairs": "Solid Wood Tables & Chairs",
+      "wardrobe": "Wooden Wardrobes",
+      "custom": "Custom Boards"
+    },
+    "items": {
+      "zen_table": {
+        "name": "Zen · Solid Wood Coffee Table",
+        "desc": "Inspired by Zen philosophy, this coffee table features a low profile and clean lines. Made from premium solid walnut, it brings a sense of calm and stability to your living room."
+      },
+      "oak_chair": {
+        "name": "Simple · Oak Dining Chair",
+        "desc": "A minimalist dining chair that prioritizes comfort and durability. The curved backrest provides excellent support, while the white oak finish adds a touch of brightness."
+      },
+      "silent_wardrobe": {
+        "name": "Quiet · Bedroom Wardrobe",
+        "desc": "Designed for a peaceful bedroom environment. This wardrobe features soft-close doors and ample storage space, crafted from sustainable ash wood."
+      },
+      "cloud_bookshelf": {
+        "name": "Cloud Hidden · Bookshelf Combination",
+        "desc": "Modular bookshelf system that can be customized to fit your space. The open design creates an airy feel, perfect for displaying your favorite books and objects."
+      },
+      "nature_bed": {
+        "name": "True · Wooden Bed",
+        "desc": "Return to the basics with this solid cherry wood bed frame. The natural grain patterns are highlighted by a hand-rubbed oil finish."
+      },
+      "flow_cabinet": {
+        "name": "Flowing Light · Side Cabinet",
+        "desc": "A versatile side cabinet with a unique wave-patterned door. It serves as both a functional storage unit and a beautiful accent piece."
+      },
+      "minimal_sofa": {
+        "name": "Minimal · Fabric Sofa",
+        "desc": "Clean lines meet ultimate comfort. Upholstered in premium natural linen with a solid oak frame, this sofa is the epitome of understated luxury."
+      },
+      "rattan_chair": {
+        "name": "Breeze · Rattan Chair",
+        "desc": "Hand-woven natural rattan combined with a solid wood structure. Lightweight yet durable, it brings a relaxed, organic vibe to any room."
+      },
+      "glass_cabinet": {
+        "name": "Clear · Glass Cabinet",
+        "desc": "Showcase your treasured items in this elegant glass and wood cabinet. The tempered glass doors keep dust out while allowing full visibility."
+      }
+    },
+    "view_more": "View More",
+    "details": {
+      "specs": "Specifications",
+      "material": "Material",
+      "dimensions": "Dimensions",
+      "weight": "Weight",
+      "inquire": "Inquire About This Product",
+      "delivery_note": "Custom made to order. Delivery time varies by location.",
+      "not_found": "Product Not Found",
+      "back_to_list": "Back to Product List"
+    }
+  },
+  "craftsmanship": {
+    "title": "Craftsmanship",
+    "subtitle": "From forest to home, every step is a tribute to nature",
+    "steps": {
+      "selection": {
+        "title": "Wood Selection",
+        "desc": "Deep into global primeval forests, selecting high-quality hardwoods over 50 years old to ensure stability."
+      },
+      "drying": {
+        "title": "Natural Drying",
+        "desc": "180 days of natural seasoning and drying to eliminate internal stress and prevent cracking and deformation."
+      },
+      "polishing": {
+        "title": "Fine Polishing",
+        "desc": "12 manual polishing processes to retain the natural texture of the wood, making it feel as warm as baby skin."
+      },
+      "coating": {
+        "title": "Eco Coating",
+        "desc": "Using German imported plant wood wax oil, 0 formaldehyde and pollution-free, allowing the wood to breathe freely."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Win-win cooperation, customer first",
+    "info": {
+      "address": "Address",
+      "address_val": "Intersection of Chuangfu 6th Road and Chuangxing 11th Road, Lecong Town, Shunde District, Foshan City, Guangdong Province, China",
+      "phone": "WhatsApp",
+      "business": "Email"
+    },
+    "form": {
+      "name": "Name",
+      "name_ph": "Your Name",
+      "phone": "Phone",
+      "phone_ph": "Contact Number",
+      "desc": "Description",
+      "desc_ph": "Please briefly describe your needs...",
+      "submit": "Submit Inquiry"
+    }
+  },
+  "footer": {
+    "rights": "Foshan Jincu Furniture Co., Ltd. All Rights Reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact Us"
+  },
+  "meta": {
+    "title": "JINCU | Minimalist High-End Furniture",
+    "description": "Wood as medium, interpreting minimalist life aesthetics. JINCU is committed to providing high-end, natural, and minimalist solid wood furniture."
+  }
+}

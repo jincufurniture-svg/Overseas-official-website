@@ -1,75 +1,52 @@
-# Nuxt Minimal Starter
+# JINCU Furniture Official Website
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Project Overview
+High-end minimalist furniture company website built with Nuxt 4 and Tailwind CSS.
+Focuses on natural wood aesthetics, minimalism, and premium visual experience.
 
-## Setup
+## Features
+- **Minimalist Design**: Clean layout, wood tones, and ample whitespace.
+- **Responsive**: Fully adapted for Desktop (1920px/1366px) and Mobile devices.
+- **Components**:
+  - `TheHeader`: Sticky navigation with transparency effects.
+  - `HeroSection`: Full-screen immersive banner.
+  - `BrandIntro`: Storytelling section with left-right layout.
+  - `ProductShowcase`: Grid layout with category filtering tabs.
+  - `Craftsmanship`: Step-by-step process visualization.
+  - `ContactSection`: Contact form and information.
+  - `TheFooter`: Simple copyright footer.
 
-Make sure to install dependencies:
+## Tech Stack
+- **Framework**: Nuxt 4
+- **Styling**: Tailwind CSS
+- **Fonts**: Montserrat (Headings), Roboto/PingFang SC (Body)
 
+## Setup & Run
+
+### Install Dependencies
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
+### Development
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
-
+### Build for Production
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
-
+### Preview Production Build
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+node .output/server/index.mjs
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Project Structure
+- `app/`: Source code directory.
+  - `components/`: Vue components.
+  - `assets/`: Static assets and global CSS.
+  - `app.vue`: Main entry component.
+- `nuxt.config.ts`: Nuxt configuration.
+- `tailwind.config.js`: Tailwind styling configuration.
