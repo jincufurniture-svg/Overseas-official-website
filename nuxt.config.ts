@@ -15,9 +15,6 @@ export default defineNuxtConfig({
       ]
     }
   },
-  nitro: {
-    preset: 'vercel'
-  },
   i18n: {
     debug: false,
     locales: [
