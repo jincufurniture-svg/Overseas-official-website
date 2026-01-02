@@ -1,6 +1,6 @@
 import { put } from '@vercel/blob'
 import { serverSupabaseUser } from '#supabase/server'
-// import sharp from 'sharp'
+import sharp from 'sharp'
 
 export default defineEventHandler(async (event) => {
   // Check authentication
@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
   // Process image with sharp if it's an image
   if (file.type && file.type.startsWith('image/')) {
     try {
-      const image = console.log(file.data)
+      const image = sharp(file.data)
       const metadata = await image.metadata()
 
       // Resize if width is greater than 800
