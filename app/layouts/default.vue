@@ -2,7 +2,7 @@
   <div class="font-sans antialiased text-grey-dark bg-white selection:bg-wood selection:text-white">
     <TheHeader />
     <main>
-      <NuxtPage />
+      <slot />
     </main>
     <TheFooter />
   </div>
