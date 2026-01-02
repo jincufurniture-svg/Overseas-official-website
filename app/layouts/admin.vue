@@ -23,20 +23,20 @@
         <div
           class="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider"
         >
-          Management
+          管理
         </div>
 
         <el-menu-item index="/admin/products">
           <el-icon><Box /></el-icon>
-          <span>Products</span>
+          <span>产品管理</span>
         </el-menu-item>
         <el-menu-item index="/admin/categories">
           <el-icon><Files /></el-icon>
-          <span>Categories</span>
+          <span>分类管理</span>
         </el-menu-item>
         <el-menu-item index="/admin/contacts">
           <el-icon><Message /></el-icon>
-          <span>Contacts</span>
+          <span>留言管理</span>
         </el-menu-item>
       </el-menu>
 
@@ -48,7 +48,7 @@
             A
           </div>
           <div class="text-sm">
-            <div class="text-white font-medium">Administrator</div>
+            <div class="text-white font-medium">管理员</div>
             <div class="text-gray-500 text-xs">admin@jincu.com</div>
           </div>
         </div>
@@ -58,7 +58,7 @@
           @click="logout"
         >
           <el-icon class="mr-2"><SwitchButton /></el-icon>
-          Sign Out
+          退出登录
         </el-button>
       </div>
     </el-aside>
@@ -68,10 +68,10 @@
         class="bg-white h-16 border-b flex items-center justify-between px-6 sticky top-0 z-10 shadow-sm"
       >
         <div class="flex items-center gap-2 text-sm text-gray-500">
-          <span class="text-gray-400">Admin</span>
+          <span class="text-gray-400">后台</span>
           <span class="text-gray-300">/</span>
           <span class="text-gray-800 font-medium capitalize">{{
-            route.name?.toString().split("-").pop() || "Dashboard"
+            route.name?.toString().split("-").pop() || "仪表盘"
           }}</span>
         </div>
       </el-header>
@@ -97,6 +97,7 @@ import {
 const supabase = useSupabaseClient();
 const router = useRouter();
 const route = useRoute();
+const appStore = useAppStore();
 
 const activeMenu = computed(() => {
   // Handle sub-routes highlighting the parent menu
@@ -108,6 +109,10 @@ const logout = async () => {
   await supabase.auth.signOut();
   router.push("/admin/login");
 };
+
+onMounted(() => {
+  appStore.setLocale("zh");
+});
 </script>
 
 <style scoped>

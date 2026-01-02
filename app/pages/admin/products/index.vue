@@ -2,25 +2,28 @@
   <div>
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
       <div>
-        <h2 class="text-2xl font-bold text-gray-800 tracking-tight">Products</h2>
-        <p class="text-gray-500 text-sm mt-1">Manage your product catalog and inventory</p>
+        <h2 class="text-2xl font-bold text-gray-800 tracking-tight">产品管理</h2>
+        <p class="text-gray-500 text-sm mt-1">管理产品目录与库存</p>
       </div>
       <div class="flex gap-3">
-        <el-input
-          placeholder="Search products..."
-          prefix-icon="Search"
-          class="w-64"
-        />
+        <form class="inline-block" @submit.prevent="handleSearch">
+          <el-input
+            v-model="searchInput"
+            placeholder="搜索产品..."
+            :prefix-icon="Search"
+            class="w-64"
+          />
+        </form>
         <el-button type="primary" class="bg-black border-black hover:bg-gray-800 hover:border-gray-800" @click="navigateTo('/admin/products/create')">
           <el-icon class="mr-2"><Plus /></el-icon>
-          Add Product
+          新增产品
         </el-button>
       </div>
     </div>
 
     <el-card shadow="hover" class="border-0 ring-1 ring-gray-200 rounded-lg overflow-hidden" :body-style="{ padding: '0' }" v-loading="loading">
-      <el-table :data="products" style="width: 100%" size="large" :header-cell-style="{ background: '#f9fafb', color: '#4b5563', fontWeight: '600' }">
-        <el-table-column label="Product Info" width="300">
+      <el-table :data="displayedProducts" empty-text="无数据" style="width: 100%" size="large" :header-cell-style="{ background: '#f9fafb', color: '#4b5563', fontWeight: '600' }">
+        <el-table-column label="产品信息" width="300">
           <template #default="scope">
             <div class="flex items-center gap-4 py-2">
               <el-image 
@@ -37,21 +40,21 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column prop="category" label="Category">
+        <el-table-column prop="category" label="分类">
            <template #default="scope">
              <el-tag effect="plain" type="info" round size="small" class="uppercase text-xs tracking-wider border-0 bg-gray-100 text-gray-600">
                {{ scope.row.category }}
              </el-tag>
            </template>
         </el-table-column>
-        <el-table-column label="Status" width="120">
+        <el-table-column label="状态" width="120">
            <template #default>
              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-               Active
+               启用
              </span>
            </template>
         </el-table-column>
-        <el-table-column label="Actions" width="180" align="right">
+        <el-table-column label="操作" width="180" align="right">
           <template #default="scope">
             <el-button-group>
               <el-button size="small" :icon="Edit" @click="navigateTo(`/admin/products/${scope.row.id}`)" />
@@ -83,27 +86,41 @@ definePageMeta({
 
 const products = ref([])
 const loading = ref(true)
+const searchInput = ref('')
+const searchQuery = ref('')
+const displayedProducts = computed(() => {
+  if (!products.value) return []
+  const q = searchQuery.value.toLowerCase()
+  if (!q) return products.value
+  return products.value.filter(p => 
+    (p.name || '').toLowerCase().includes(q) ||
+    (p.category || '').toLowerCase().includes(q)
+  )
+})
+const handleSearch = () => {
+  searchQuery.value = searchInput.value.trim()
+}
 
 const fetchProducts = async () => {
   loading.value = true
-  const { data, error: fetchError } = await useFetch('/api/products', {
-    query: { language: 'en' }
-  })
-  if (data.value) {
-    products.value = data.value
-  } else if (fetchError.value) {
-    ElMessage.error('Failed to fetch products')
+  try {
+    const data = await $fetch('/api/products', {
+      query: { language: 'zh' }
+    })
+    products.value = Array.isArray(data) ? data : []
+  } catch (e) {
+    ElMessage.error('获取产品失败')
   }
   loading.value = false
 }
 
 const handleDelete = (product) => {
   ElMessageBox.confirm(
-    'Are you sure you want to delete this product? This action cannot be undone.',
-    'Delete Product',
+    '确定要删除该产品吗？此操作不可撤销。',
+    '删除产品',
     {
-      confirmButtonText: 'Delete',
-      cancelButtonText: 'Cancel',
+      confirmButtonText: '删除',
+      cancelButtonText: '取消',
       type: 'warning',
       icon: Delete
     }
@@ -112,10 +129,10 @@ const handleDelete = (product) => {
       await $fetch(`/api/admin/products/${product.id}`, {
         method: 'DELETE'
       })
-      ElMessage.success('Product deleted successfully')
+      ElMessage.success('产品已删除')
       products.value = products.value.filter(p => p.id !== product.id)
     } catch (e) {
-      ElMessage.error('Failed to delete product')
+      ElMessage.error('删除产品失败')
       fetchProducts()
     }
   })

@@ -88,15 +88,15 @@ const { data: categories } = await useFetch('/api/categories', {
 })
 
 const categoryName = computed(() => {
-  if (!product) return ''
-  const cat = categories.value?.find(c => c.id === product.category_id)
-  return cat ? cat.name : product.category
+  if (!product?.value) return ''
+  const cat = categories.value?.find(c => c.id === product.value.category_id)
+  return cat ? cat.name : product.value.category
 })
 
 useHead({
-  title: computed(() => product ? `${product.name} - JINCU` : 'Product Not Found - JINCU'),
+  title: computed(() => (product?.value?.name ? `${product.value.name} - JINCU` : 'Product Not Found - JINCU')),
   meta: [
-    { name: 'description', content: computed(() => product?.desc || '') }
+    { name: 'description', content: computed(() => product?.value?.desc || '') }
   ]
 })
 </script>
