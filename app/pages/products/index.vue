@@ -39,19 +39,25 @@ import { useI18n } from 'vue-i18n'
 const { t, locale } = useI18n()
 const { products } = useProducts()
 
-useHead({
-  title: computed(() => `${t('products.page_title')} - JINCU`),
-  meta: [
-    { name: 'description', content: computed(() => t('products.page_subtitle')) },
-    { property: 'og:title', content: computed(() => `${t('products.page_title')} - JINCU`) },
-    { property: 'og:description', content: computed(() => t('products.page_subtitle')) }
-  ],
-  link: [
-    { rel: 'canonical', href: computed(() => {
-      const url = useRequestURL()
-      return `${url.origin}${url.pathname}`
-    }) }
-  ]
+useHead(() => {
+  const title = `${t('products.page_title')} - JINCU`
+  const description = t('products.page_subtitle')
+  const canonical = '/products'
+
+  return {
+    title,
+    meta: [
+      { name: 'description', content: description },
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: description }
+    ],
+    link: [
+      {
+        rel: 'canonical',
+        href: canonical
+      }
+    ]
+  }
 })
 
 const { data: categories } = await useFetch('/api/categories', {

@@ -94,43 +94,42 @@ const categoryName = computed(() => {
   return cat ? cat.name : product.value.category
 })
 
-useHead({
-  title: computed(() => (product?.value?.name ? `${product.value.name} - JINCU` : 'Product Not Found - JINCU')),
-  meta: [
-    { name: 'description', content: computed(() => product?.value?.desc || '') },
-    { property: 'og:type', content: 'product' },
-    { property: 'og:title', content: computed(() => product?.value?.name || 'Product - JINCU') },
-    { property: 'og:description', content: computed(() => product?.value?.desc || '') },
-    { property: 'og:image', content: computed(() => product?.value?.image || '') },
-    { property: 'og:url', content: computed(() => {
-      const url = useRequestURL()
-      return `${url.origin}${url.pathname}`
-    }) }
-  ],
-  link: [
-    { rel: 'canonical', href: computed(() => {
-      const url = useRequestURL()
-      return `${url.origin}${url.pathname}`
-    }) }
-  ],
-  script: [
-    {
-      type: 'application/ld+json',
-      children: computed(() => {
-        const url = useRequestURL()
-        const data = {
-          '@context': 'https://schema.org',
-          '@type': 'Product',
-          name: product?.value?.name || '',
-          image: product?.value?.image ? [product.value.image] : [],
-          description: product?.value?.desc || '',
-          brand: { '@type': 'Brand', name: 'JINCU' },
-          category: categoryName.value || '',
-          url: `${url.origin}${url.pathname}`
-        }
-        return JSON.stringify(data)
-      })
-    }
-  ]
+useHead(() => {
+  const name = product?.value?.name
+  const desc = product?.value?.desc || ''
+  const image = product?.value?.image || ''
+  const canonical = `/products/${route.params.id}`
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: name || '',
+    image: image ? [image] : [],
+    description: desc,
+    brand: { '@type': 'Brand', name: 'JINCU' },
+    category: categoryName.value || '',
+    url: canonical
+  }
+
+  return {
+    title: name ? `${name} - JINCU` : 'Product Not Found - JINCU',
+    meta: [
+      { name: 'description', content: desc },
+      { property: 'og:type', content: 'product' },
+      { property: 'og:title', content: name || 'Product - JINCU' },
+      { property: 'og:description', content: desc },
+      { property: 'og:image', content: image },
+      { property: 'og:url', content: canonical }
+    ],
+    link: [
+      { rel: 'canonical', href: canonical }
+    ],
+    script: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify(jsonLd)
+      }
+    ]
+  }
 })
 </script>

@@ -21,35 +21,18 @@ const siteDescription = computed(() => (locale.value === 'zh'
 onMounted(() => {
   appStore.initLocale()
 })
-useHead({
+useHead(() => ({
   htmlAttrs: {
-    lang: computed(() => (locale.value === 'zh' ? 'zh-CN' : 'en-US'))
+    lang: locale.value === 'zh' ? 'zh-CN' : 'en-US'
   },
+  title: siteTitle.value,
   meta: [
-    { property: 'og:locale', content: ogLocale, key: 'og:locale' },
-    { name: 'description', content: siteDescription, key: 'description' },
-    { property: 'og:title', content: siteTitle, key: 'og:title' },
-    { property: 'og:description', content: siteDescription, key: 'og:description' },
-    { name: 'twitter:title', content: siteTitle, key: 'twitter:title' },
-    { name: 'twitter:description', content: siteDescription, key: 'twitter:description' }
-  ],
-  link: [
-    {
-      rel: 'alternate',
-      hreflang: 'en',
-      href: computed(() => {
-        const u = useRequestURL()
-        return `${u.origin}${u.pathname}`
-      })
-    },
-    {
-      rel: 'alternate',
-      hreflang: 'zh',
-      href: computed(() => {
-        const u = useRequestURL()
-        return `${u.origin}${u.pathname}`
-      })
-    }
+    { property: 'og:locale', content: ogLocale.value, key: 'og:locale' },
+    { name: 'description', content: siteDescription.value, key: 'description' },
+    { property: 'og:title', content: siteTitle.value, key: 'og:title' },
+    { property: 'og:description', content: siteDescription.value, key: 'og:description' },
+    { name: 'twitter:title', content: siteTitle.value, key: 'twitter:title' },
+    { name: 'twitter:description', content: siteDescription.value, key: 'twitter:description' }
   ]
-})
+}))
 </script>
