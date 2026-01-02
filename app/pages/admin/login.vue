@@ -99,7 +99,7 @@ definePageMeta({
 
 const supabase = useSupabaseClient();
 const router = useRouter();
- 
+
 const email = ref("");
 const password = ref("");
 const loading = ref(false);
