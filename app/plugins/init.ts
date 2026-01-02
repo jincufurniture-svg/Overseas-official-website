@@ -1,5 +1,5 @@
 export default defineNuxtPlugin((nuxtApp) => {
-  const store = useAppStore(nuxtApp.$pinia)
+  const store = useAppStore()
   
   if (process.client) {
     store.initLocale()
