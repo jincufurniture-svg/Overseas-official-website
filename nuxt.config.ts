@@ -31,6 +31,6 @@ export default defineNuxtConfig({
     key: process.env.SUPABASE_KEY || ''
   },
   build: {
-    transpile: ['pinia']
+    transpile: ['pinia', 'element-plus/dist/index.full.js']
   }
 })
