@@ -15,7 +15,6 @@ export default defineNuxtConfig({
       ]
     }
   },
-  ssr: false,
   i18n: {
     debug: false,
     locales: [
