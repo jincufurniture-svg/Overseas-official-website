@@ -3,7 +3,7 @@
     <NuxtLink 
       v-for="product in products" 
       :key="product.id"
-      :to="localePath('/products/' + product.key)"
+      :to="'/products/' + product.id"
       class="group cursor-pointer block"
     >
       <div class="bg-beige overflow-hidden relative aspect-[4/5] mb-4">
@@ -24,8 +24,6 @@
 </template>
 
 <script setup>
-const localePath = useLocalePath()
-
 defineProps({
   products: {
     type: Array,

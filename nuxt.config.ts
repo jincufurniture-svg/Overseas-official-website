@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/i18n'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/i18n', '@nuxtjs/supabase', '@element-plus/nuxt', '@pinia/nuxt'],
   srcDir: 'app',
   css: ['~/assets/css/main.css'],
   app: {
@@ -16,18 +16,18 @@ export default defineNuxtConfig({
     }
   },
   i18n: {
+    debug: true,
     locales: [
       { code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
       { code: 'zh', iso: 'zh-CN', file: 'zh.json', name: '中文' }
     ],
     defaultLocale: 'en',
-    strategy: 'prefix_except_default',
-    lazy: true,
-    langDir: 'locales/',
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root',
-    }
+    strategy: 'no_prefix',
+    langDir: 'translations',
+  },
+  supabase: {
+    redirect: false,
+    url: process.env.SUPABASE_URL || '',
+    key: process.env.SUPABASE_KEY || ''
   }
 })

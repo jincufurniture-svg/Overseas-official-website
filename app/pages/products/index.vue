@@ -9,13 +9,20 @@
       <!-- Categories Filter -->
       <div class="flex justify-center mb-12 space-x-8">
         <button 
+          @click="activeCategory = 'all'"
+          class="pb-2 text-sm md:text-base transition-all duration-300 border-b-2"
+          :class="[activeCategory === 'all' ? 'text-wood border-wood font-semibold' : 'text-grey border-transparent hover:text-wood-dark']"
+        >
+          {{ $t('products.categories.all') }}
+        </button>
+        <button 
           v-for="cat in categories" 
           :key="cat.id"
           @click="activeCategory = cat.id"
           class="pb-2 text-sm md:text-base transition-all duration-300 border-b-2"
           :class="[activeCategory === cat.id ? 'text-wood border-wood font-semibold' : 'text-grey border-transparent hover:text-wood-dark']"
         >
-          {{ $t(`products.categories.${cat.id}`) }}
+          {{ cat.name }}
         </button>
       </div>
 
@@ -29,30 +36,30 @@
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const { products } = useProducts()
 
 useHead({
   title: computed(() => `${t('products.page_title')} - JINCU`),
 })
 
-const categories = [
-  { id: 'all' },
-  { id: 'chairs' },
-  { id: 'wardrobe' },
-  { id: 'custom' }
-]
+const { data: categories } = await useFetch('/api/categories', {
+  query: { language: locale }
+})
 
 const activeCategory = ref('all')
 
 const filteredProducts = computed(() => {
-  const currentProducts = products.map(p => ({
+  if (!products.value) return []
+  
+  let currentProducts = products.value.map(p => ({
     ...p,
-    name: t(`products.items.${p.key}.name`),
-    categoryName: t(`products.categories.${p.category}`)
+    categoryName: categories.value?.find(c => c.id === p.category_id)?.name || p.category
   }))
 
-  if (activeCategory.value === 'all') return currentProducts
-  return currentProducts.filter(p => p.category === activeCategory.value)
+  if (activeCategory.value !== 'all') {
+    currentProducts = currentProducts.filter(p => p.category_id === activeCategory.value)
+  }
+  return currentProducts
 })
 </script>

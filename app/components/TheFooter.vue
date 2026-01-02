@@ -7,12 +7,11 @@
       <div class="flex space-x-6 text-sm">
         <a href="#" class="hover:text-wood transition-colors">{{ $t('footer.privacy') }}</a>
         <a href="#" class="hover:text-wood transition-colors">{{ $t('footer.terms') }}</a>
-        <NuxtLink :to="localePath('/#contact')" class="hover:text-wood transition-colors">{{ $t('footer.contact') }}</NuxtLink>
+        <NuxtLink to="/#contact" class="hover:text-wood transition-colors">{{ $t('footer.contact') }}</NuxtLink>
       </div>
     </div>
   </footer>
 </template>
 
 <script setup>
-const localePath = useLocalePath()
 </script>

@@ -54,27 +54,59 @@
 
         <!-- Form -->
         <div class="w-full lg:w-2/3 bg-beige p-8 md:p-12">
-          <form class="space-y-6">
+          <form @submit.prevent="submitForm" class="space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="space-y-2">
                 <label class="text-sm font-medium text-grey-dark">{{ $t('contact.form.name') }}</label>
-                <input type="text" class="w-full bg-white border border-transparent focus:border-wood px-4 py-3 outline-none transition-colors text-grey-dark" :placeholder="$t('contact.form.name_ph')">
+                <input v-model="form.name" type="text" required class="w-full bg-white border border-transparent focus:border-wood px-4 py-3 outline-none transition-colors text-grey-dark" :placeholder="$t('contact.form.name_ph')">
               </div>
               <div class="space-y-2">
                 <label class="text-sm font-medium text-grey-dark">{{ $t('contact.form.phone') }}</label>
-                <input type="tel" class="w-full bg-white border border-transparent focus:border-wood px-4 py-3 outline-none transition-colors text-grey-dark" :placeholder="$t('contact.form.phone_ph')">
+                <input v-model="form.phone" type="tel" required class="w-full bg-white border border-transparent focus:border-wood px-4 py-3 outline-none transition-colors text-grey-dark" :placeholder="$t('contact.form.phone_ph')">
               </div>
             </div>
             <div class="space-y-2">
               <label class="text-sm font-medium text-grey-dark">{{ $t('contact.form.desc') }}</label>
-              <textarea rows="4" class="w-full bg-white border border-transparent focus:border-wood px-4 py-3 outline-none transition-colors text-grey-dark" :placeholder="$t('contact.form.desc_ph')"></textarea>
+              <textarea v-model="form.description" rows="4" class="w-full bg-white border border-transparent focus:border-wood px-4 py-3 outline-none transition-colors text-grey-dark" :placeholder="$t('contact.form.desc_ph')"></textarea>
             </div>
-            <button type="button" class="bg-black text-white px-8 py-3 text-sm tracking-widest hover:bg-wood transition-colors duration-300 w-full md:w-auto">
-              {{ $t('contact.form.submit') }}
+            <button type="submit" :disabled="loading" class="bg-black text-white px-8 py-3 text-sm tracking-widest hover:bg-wood transition-colors duration-300 w-full md:w-auto disabled:opacity-50">
+              {{ loading ? 'Sending...' : $t('contact.form.submit') }}
             </button>
+            <p v-if="success" class="text-green-600 text-sm mt-2">Message sent successfully!</p>
+            <p v-if="error" class="text-red-600 text-sm mt-2">Error sending message. Please try again.</p>
           </form>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<script setup>
+const form = ref({
+  name: '',
+  phone: '',
+  description: ''
+})
+const loading = ref(false)
+const success = ref(false)
+const error = ref(false)
+
+const submitForm = async () => {
+  loading.value = true
+  success.value = false
+  error.value = false
+
+  try {
+    await $fetch('/api/contacts', {
+      method: 'POST',
+      body: form.value
+    })
+    success.value = true
+    form.value = { name: '', phone: '', description: '' }
+  } catch (e) {
+    error.value = true
+  } finally {
+    loading.value = false
+  }
+}
+</script>

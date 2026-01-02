@@ -132,5 +132,11 @@
   "meta": {
     "title": "JINCU | Minimalist High-End Furniture",
     "description": "Wood as medium, interpreting minimalist life aesthetics. JINCU is committed to providing high-end, natural, and minimalist solid wood furniture."
+  },
+  "home": {
+      "products": {
+          "title": "Product Center",
+          "subtitle": "Not just furniture, but art"
+      }
   }
 }

@@ -1,0 +1,57 @@
+-- Drop existing tables to start fresh
+DROP TABLE IF EXISTS products CASCADE;
+DROP TABLE IF EXISTS categories CASCADE;
+DROP TABLE IF EXISTS contacts CASCADE;
+
+-- Create simplified categories table with UUID
+CREATE TABLE categories (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name_en TEXT NOT NULL,
+  name_zh TEXT NOT NULL,
+  sort_order INTEGER DEFAULT 0,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+-- Create simplified products table with UUID
+CREATE TABLE products (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  category_id UUID REFERENCES categories(id) ON DELETE SET NULL,
+  image_url TEXT NOT NULL,
+  name_en TEXT NOT NULL,
+  name_zh TEXT NOT NULL,
+  description_en TEXT,
+  description_zh TEXT,
+  specs_en JSONB DEFAULT '{}'::jsonb,
+  specs_zh JSONB DEFAULT '{}'::jsonb,
+  sort_order INTEGER DEFAULT 0,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+-- Create contacts table with UUID
+CREATE TABLE contacts (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT NOT NULL,
+  phone TEXT,
+  description TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+  status TEXT DEFAULT 'pending'
+);
+
+-- Enable Row Level Security (RLS)
+ALTER TABLE categories ENABLE ROW LEVEL SECURITY;
+ALTER TABLE products ENABLE ROW LEVEL SECURITY;
+ALTER TABLE contacts ENABLE ROW LEVEL SECURITY;
+
+-- Create policies
+-- Public read access
+CREATE POLICY "Public categories are viewable by everyone" ON categories FOR SELECT USING (true);
+CREATE POLICY "Public products are viewable by everyone" ON products FOR SELECT USING (true);
+
+-- Admin full access
+CREATE POLICY "Admins can do everything on categories" ON categories FOR ALL TO authenticated USING (true);
+CREATE POLICY "Admins can do everything on products" ON products FOR ALL TO authenticated USING (true);
+CREATE POLICY "Admins can view contacts" ON contacts FOR SELECT TO authenticated USING (true);
+CREATE POLICY "Admins can update contacts" ON contacts FOR UPDATE TO authenticated USING (true);
+
+-- Allow public to insert contacts
+CREATE POLICY "Public can insert contacts" ON contacts FOR INSERT WITH CHECK (true);

@@ -5,7 +5,7 @@
         <!-- Image -->
         <div class="w-full md:w-1/2">
           <div class="aspect-[4/3] bg-grey-light overflow-hidden relative">
-            <img src="https://placehold.co/800x600/E8E5E0/333333?text=Brand+Story+Image" alt="Brand Story" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+            <img src="@/assets/images/brand-story.jpg" alt="Brand Story" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
           </div>
         </div>
 
