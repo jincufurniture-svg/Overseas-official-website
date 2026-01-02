@@ -41,10 +41,22 @@ const { products } = useProducts()
 
 useHead({
   title: computed(() => `${t('products.page_title')} - JINCU`),
+  meta: [
+    { name: 'description', content: computed(() => t('products.page_subtitle')) },
+    { property: 'og:title', content: computed(() => `${t('products.page_title')} - JINCU`) },
+    { property: 'og:description', content: computed(() => t('products.page_subtitle')) }
+  ],
+  link: [
+    { rel: 'canonical', href: computed(() => {
+      const url = useRequestURL()
+      return `${url.origin}${url.pathname}`
+    }) }
+  ]
 })
 
 const { data: categories } = await useFetch('/api/categories', {
-  query: { language: locale }
+  query: { language: locale },
+  watch: [locale]
 })
 
 const activeCategory = ref('all')

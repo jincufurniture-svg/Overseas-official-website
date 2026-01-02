@@ -15,11 +15,12 @@ export const useProducts = () => {
   })
 
   const getProductByKey = async (key) => {
-    // For single product, we might want a separate fetch or find from the list
-    // A separate fetch ensures fresh data and handles direct navigation better
-    // key is actually the ID now
-    const { data: product } = await useFetch(`/api/products/detail`, {
-      query: { id: key, language: locale.value }
+    const { data: product } = await useAsyncData(`product-${key}`, async () => {
+      return await $fetch('/api/products/detail', {
+        query: { id: key, language: locale.value }
+      })
+    }, {
+      watch: [locale]
     })
     return product
   }

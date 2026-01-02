@@ -15,6 +15,22 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "Jincu Furniture - Minimalist & Natural",
+      meta: [
+        { name: "description", content: "Jincu Furniture: Minimalist, natural furniture for modern living." },
+        { name: "theme-color", content: "#C19A6B" },
+        { property: "og:type", content: "website" },
+        { property: "og:site_name", content: "JINCU" },
+        { property: "og:title", content: "Jincu Furniture - Minimalist & Natural" },
+        { property: "og:description", content: "Jincu Furniture: Minimalist, natural furniture for modern living." },
+        { property: "og:locale:alternate", content: "zh_CN" },
+        { property: "og:locale:alternate", content: "en_US" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: "Jincu Furniture - Minimalist & Natural" },
+        { name: "twitter:description", content: "Jincu Furniture: Minimalist, natural furniture for modern living." }
+      ],
+      link: [
+        { rel: "canonical", href: "/" }
+      ]
     },
   },
   i18n: {

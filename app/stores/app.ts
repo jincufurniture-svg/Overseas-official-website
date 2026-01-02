@@ -6,6 +6,7 @@ export const useAppStore = defineStore("app", {
   }),
   actions: {
     setLocale(locale: string) {
+      console.log("setLocale", locale);
       this.locale = locale;
       if (process.client) {
         localStorage.setItem("locale", locale);

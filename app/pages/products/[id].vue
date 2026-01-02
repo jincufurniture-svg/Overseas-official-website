@@ -84,7 +84,8 @@ const { getProductByKey } = useProducts()
 const product = await getProductByKey(route.params.id)
 
 const { data: categories } = await useFetch('/api/categories', {
-  query: { language: locale }
+  query: { language: locale },
+  watch: [locale]
 })
 
 const categoryName = computed(() => {
@@ -96,7 +97,40 @@ const categoryName = computed(() => {
 useHead({
   title: computed(() => (product?.value?.name ? `${product.value.name} - JINCU` : 'Product Not Found - JINCU')),
   meta: [
-    { name: 'description', content: computed(() => product?.value?.desc || '') }
+    { name: 'description', content: computed(() => product?.value?.desc || '') },
+    { property: 'og:type', content: 'product' },
+    { property: 'og:title', content: computed(() => product?.value?.name || 'Product - JINCU') },
+    { property: 'og:description', content: computed(() => product?.value?.desc || '') },
+    { property: 'og:image', content: computed(() => product?.value?.image || '') },
+    { property: 'og:url', content: computed(() => {
+      const url = useRequestURL()
+      return `${url.origin}${url.pathname}`
+    }) }
+  ],
+  link: [
+    { rel: 'canonical', href: computed(() => {
+      const url = useRequestURL()
+      return `${url.origin}${url.pathname}`
+    }) }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: computed(() => {
+        const url = useRequestURL()
+        const data = {
+          '@context': 'https://schema.org',
+          '@type': 'Product',
+          name: product?.value?.name || '',
+          image: product?.value?.image ? [product.value.image] : [],
+          description: product?.value?.desc || '',
+          brand: { '@type': 'Brand', name: 'JINCU' },
+          category: categoryName.value || '',
+          url: `${url.origin}${url.pathname}`
+        }
+        return JSON.stringify(data)
+      })
+    }
   ]
 })
 </script>

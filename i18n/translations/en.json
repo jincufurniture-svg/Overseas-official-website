@@ -77,7 +77,7 @@
       "dimensions": "Dimensions",
       "weight": "Weight",
       "inquire": "Inquire About This Product",
-      "delivery_note": "Custom made to order. Delivery time varies by location.",
+      "delivery_note": "Win-win cooperation, customer first.",
       "not_found": "Product Not Found",
       "back_to_list": "Back to Product List"
     }
@@ -134,9 +134,9 @@
     "description": "Wood as medium, interpreting minimalist life aesthetics. JINCU is committed to providing high-end, natural, and minimalist solid wood furniture."
   },
   "home": {
-      "products": {
-          "title": "Product Center",
-          "subtitle": "Not just furniture, but art"
-      }
+    "products": {
+      "title": "Product Center",
+      "subtitle": "Not just furniture, but art"
+    }
   }
 }
