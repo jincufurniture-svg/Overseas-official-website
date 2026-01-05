@@ -26,14 +26,18 @@
           管理
         </div>
 
-        <el-menu-item index="/admin/products">
+        <el-menu-item index="/admin/cases">
+          <el-icon><Picture /></el-icon>
+          <span>案例管理</span>
+        </el-menu-item>
+        <!-- <el-menu-item index="/admin/products">
           <el-icon><Box /></el-icon>
           <span>产品管理</span>
         </el-menu-item>
         <el-menu-item index="/admin/categories">
           <el-icon><Files /></el-icon>
           <span>分类管理</span>
-        </el-menu-item>
+        </el-menu-item> -->
         <el-menu-item index="/admin/contacts">
           <el-icon><Message /></el-icon>
           <span>留言管理</span>
@@ -49,7 +53,6 @@
           </div>
           <div class="text-sm">
             <div class="text-white font-medium">管理员</div>
-            <div class="text-gray-500 text-xs">admin@jincu.com</div>
           </div>
         </div>
         <el-button
@@ -57,7 +60,6 @@
           class="w-full justify-center bg-transparent border-gray-700 hover:bg-gray-800 text-gray-400 hover:text-white"
           @click="logout"
         >
-          <el-icon class="mr-2"><SwitchButton /></el-icon>
           退出登录
         </el-button>
       </div>
@@ -90,6 +92,7 @@ import {
   Box,
   Files,
   Message,
+  Picture,
   SwitchButton,
   Bell,
 } from "@element-plus/icons-vue";
@@ -101,7 +104,7 @@ const appStore = useAppStore();
 
 const activeMenu = computed(() => {
   // Handle sub-routes highlighting the parent menu
-  if (route.path.startsWith("/admin/products")) return "/admin/products";
+  if (route.path.startsWith("/admin/cases")) return "/admin/cases";
   return route.path;
 });
 
@@ -116,6 +119,10 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.el-aside, .el-container {
+  height: 100vh;
+}
+
 .el-menu {
   border-right: 0;
 }

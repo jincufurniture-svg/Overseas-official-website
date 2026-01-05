@@ -10,6 +10,7 @@
         <img 
           :src="product.image" 
           :alt="product.name" 
+          loading="lazy"
           class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
         />
         <!-- Overlay Shadow -->

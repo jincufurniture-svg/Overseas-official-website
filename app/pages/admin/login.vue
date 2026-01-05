@@ -120,8 +120,10 @@ const handleLogin = async () => {
     loading.value = false;
   } else {
     // Wait for session to be established before redirecting
+    setTimeout(() => {
+      router.push("/admin/cases");
+    }, 500);
     ElMessage.success("登录成功");
-    router.push("/admin/products");
   }
 };
 

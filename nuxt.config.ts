@@ -29,7 +29,8 @@ export default defineNuxtConfig({
         { name: "twitter:description", content: "Jincu Furniture: Minimalist, natural furniture for modern living." }
       ],
       link: [
-        { rel: "canonical", href: "/" }
+        { rel: "canonical", href: "/" },
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" }
       ]
     },
   },

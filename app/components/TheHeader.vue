@@ -19,7 +19,7 @@
           to="/"
           class="text-2xl font-heading font-bold tracking-widest text-black"
         >
-          JINCU
+          {{ $t('nav.logo') }}
         </NuxtLink>
       </div>
 
@@ -143,7 +143,7 @@ const appStore = useAppStore()
 
 const navItems = [
   { key: 'home', href: '/' },
-  { key: 'products', href: '/products' },
+  { key: 'products', href: '/cases' },
   { key: 'brand', href: '/#brand' },
   { key: 'contact', href: '/#contact' },
 ]

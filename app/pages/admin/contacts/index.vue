@@ -27,7 +27,8 @@
 <script setup>
 definePageMeta({
   layout: 'admin',
-  middleware: 'auth'
+  middleware: 'auth',
+  name: '留言管理',
 })
 
 const supabase = useSupabaseClient()

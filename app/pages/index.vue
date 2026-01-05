@@ -2,7 +2,8 @@
   <div>
     <HeroSection />
     <BrandIntro />
-    <ProductShowcase />
+    <!-- <ProductShowcase /> -->
+    <CaseShowcase />
     <Craftsmanship />
     <ContactSection />
   </div>

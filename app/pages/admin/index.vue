@@ -2,5 +2,5 @@
 definePageMeta({
   middleware: 'auth'
 })
-navigateTo('/admin/products')
+navigateTo('/admin/cases')
 </script>

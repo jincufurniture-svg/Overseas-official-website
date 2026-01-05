@@ -2,9 +2,10 @@
   "nav": {
     "home": "Home",
     "brand": "Brand",
-    "products": "Products",
+    "products": "Case Show",
     "craftsmanship": "Craftsmanship",
-    "contact": "Contact"
+    "contact": "Contact",
+    "logo": "JINCU"
   },
   "hero": {
     "title": "Wood as Medium, Minimalist Aesthetics",
@@ -134,6 +135,10 @@
     "description": "Wood as medium, interpreting minimalist life aesthetics. JINCU is committed to providing high-end, natural, and minimalist solid wood furniture."
   },
   "home": {
+    "cases": {
+      "title": "Case Show",
+      "subtitle": "Not just furniture, but art"
+    },
     "products": {
       "title": "Product Center",
       "subtitle": "Not just furniture, but art"

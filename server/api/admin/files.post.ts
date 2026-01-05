@@ -34,7 +34,7 @@ export default defineEventHandler(async (event) => {
         // Resize to width 800, maintaining aspect ratio
         // Convert to webp for compression
         fileData = await image
-          .resize({ width: 800, withoutEnlargement: true })
+          .resize({ width: 1080, withoutEnlargement: true })
           .webp({ quality: 95 })
           .toBuffer()
         

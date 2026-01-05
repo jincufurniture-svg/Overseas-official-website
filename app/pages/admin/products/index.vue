@@ -81,7 +81,8 @@ import { Search, Plus, Edit, Delete } from '@element-plus/icons-vue'
 
 definePageMeta({
   layout: 'admin',
-  middleware: 'auth'
+  middleware: 'auth',
+  name: '产品管理',
 })
 
 const products = ref([])

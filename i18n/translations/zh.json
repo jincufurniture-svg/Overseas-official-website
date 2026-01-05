@@ -2,9 +2,10 @@
   "nav": {
     "home": "首页",
     "brand": "关于品牌",
-    "products": "产品中心",
+    "products": "案例展示",
     "craftsmanship": "木材工艺",
-    "contact": "联系我们"
+    "contact": "联系我们",
+    "logo": "锦簇家具"
   },
   "hero": {
     "title": "以木为媒，诠释极简生活美学",
@@ -22,9 +23,9 @@
     }
   },
   "products": {
-    "title": "产品中心",
+    "title": "案例展示",
     "subtitle": "不仅是家具，更是艺术品",
-    "page_title": "全部产品",
+    "page_title": "全部案例",
     "page_subtitle": "探索我们全系列手工家具，将自然气息带入您的家中。",
     "categories": {
       "all": "全部系列",
@@ -76,10 +77,10 @@
       "material": "材质",
       "dimensions": "尺寸",
       "weight": "重量",
-      "inquire": "咨询此产品",
+      "inquire": "咨询此案例",
       "delivery_note": "合作共赢，客户至上。",
-      "not_found": "未找到产品",
-      "back_to_list": "返回产品列表"
+      "not_found": "未找到案例",
+      "back_to_list": "返回案例列表"
     }
   },
   "craftsmanship": {
@@ -134,8 +135,12 @@
     "description": "以木为媒，诠释极简生活美学。JINCU致力于提供高端、自然、极简的实木家具。"
   },
   "home": {
-      "products": {
-          "title": "产品中心",
+    "cases": {
+      "title": "案例展示",
+      "subtitle": "不仅是家具，更是艺术品"
+    },
+    "products": {
+          "title": "案例展示产品规格",
           "subtitle": "不仅是家具，更是艺术品"
       }
   }
