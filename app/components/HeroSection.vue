@@ -1,14 +1,14 @@
 <template>
   <section
     id="home"
-    class="relative h-80vh w-full overflow-hidden lg:px-60 lg:py-16 px-0 py-0"
+    class="relative h-80vh w-full overflow-hidden lg:px-60 lg:pb-8 lg:pt-12 px-0 pb-0 pt-4"
   >
     <swiper
       :modules="modules"
-      :slides-per-view="1"
+      :slides-per-view="1"  
       :loop="true"
       :autoplay="{
-        delay: 5000,
+        delay: 3000,
         disableOnInteraction: false,
       }"
       :navigation="true"

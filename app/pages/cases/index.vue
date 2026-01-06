@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="pt-40 pb-16">
+    <section class="pt-24 pb-16">
       <div class="container text-center">
         <h1 class="text-4xl md:text-5xl font-heading font-bold text-black mb-4">{{ $t('home.cases.title') }}</h1>
         <p class="text-grey font-light max-w-2xl mx-auto">{{ $t('home.cases.subtitle') }}</p>
