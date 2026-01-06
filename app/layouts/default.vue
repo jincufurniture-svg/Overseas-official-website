@@ -1,7 +1,7 @@
 <template>
   <div class="font-sans antialiased text-grey-dark bg-white selection:bg-wood selection:text-white">
     <TheHeader />
-    <main>
+    <main class="pt-20">
       <slot />
     </main>
     <TheFooter />

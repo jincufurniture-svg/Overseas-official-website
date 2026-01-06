@@ -1,56 +1,59 @@
 <template>
   <section
     id="home"
-    class="relative h-screen w-full flex items-center justify-center overflow-hidden"
+    class="relative h-80vh w-full overflow-hidden lg:px-60 lg:py-16 px-0 py-0"
   >
-    <!-- Background Image Placeholder -->
-
-    <div class="absolute inset-0 z-1">
-      <div
-        class="w-full h-full flex items-center justify-center absolute top-0 left-0"
-      >
-        <img class="w-full relative bottom-40 md:w-2/3 md:bottom-0" src="@/assets/images/index.jpeg" alt="index" />
-      </div>
-      <div
-        class="w-full h-full bg-[#ad977b] flex items-center justify-center text-[#2c2c2c] text-7xl font-bold bg-cover bg-center"
-      >
-        <!-- High-End Wood Texture -->
-      </div>
-    </div>
-
-    <!-- Content -->
-    <div class="relative z-10 container text-center">
-      <h1
-        class="text-4xl md:text-6xl font-heading font-bold text-white mb-6 tracking-wider opacity-0 animate-fade-in-up"
-      >
-        {{ $t("hero.title") }}
-      </h1>
-      <p
-        class="text-lg md:text-xl font-light text-white/90 tracking-wide opacity-0 animate-fade-in-up animation-delay-300"
-      >
-        {{ $t("hero.subtitle") }}
-      </p>
-    </div>
+    <swiper
+      :modules="modules"
+      :slides-per-view="1"
+      :loop="true"
+      :autoplay="{
+        delay: 5000,
+        disableOnInteraction: false,
+      }"
+      :navigation="true"
+      :pagination="{ clickable: true }"
+      class="h-full w-full"
+    >
+      <swiper-slide v-for="(item, index) in carouselItems" :key="index">
+        <div class="w-full h-full relative">
+          <img
+            :src="item.image"
+            :alt="item.alt"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </swiper-slide>
+    </swiper>
   </section>
 </template>
 
+<script setup lang="ts">
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import image1 from "@/assets/images/banner/1.jpg";
+import image2 from "@/assets/images/banner/2.jpg";
+import image3 from "@/assets/images/banner/3.jpg";
+
+const modules = [Autoplay, Navigation, Pagination];
+
+const carouselItems = [
+  { image: image1, alt: "Home Banner 1" },
+  { image: image2, alt: "Home Banner 2" },
+  { image: image3, alt: "Home Banner 3" },
+];
+</script>
+
 <style scoped>
-.animate-fade-in-up {
-  animation: fadeInUp 1s ease-out forwards;
+:deep(.swiper-button-next),
+:deep(.swiper-button-prev) {
+  color: white;
 }
-
-.animation-delay-300 {
-  animation-delay: 300ms;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+:deep(.swiper-pagination-bullet-active) {
+  background: white;
 }
 </style>

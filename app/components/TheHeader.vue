@@ -104,7 +104,7 @@
     <!-- Mobile Menu -->
     <div
       v-if="isMobileMenuOpen"
-      class="md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 px-6 flex flex-col space-y-4"
+      class="md:hidden absolute top-20 left-0 w-full bg-white shadow-lg py-4 px-6 flex flex-col space-y-4"
     >
       <NuxtLink
         v-for="item in navItems"
