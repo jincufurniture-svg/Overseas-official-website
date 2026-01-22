@@ -2,7 +2,7 @@
   "nav": {
     "home": "Home",
     "brand": "Brand",
-    "products": "Case Show",
+    "products": "Showcase",
     "craftsmanship": "Craftsmanship",
     "contact": "Contact",
     "logo": "JINCU"
@@ -136,7 +136,7 @@
   },
   "home": {
     "cases": {
-      "title": "Case Show",
+      "title": "Showcase",
       "subtitle": "Not just furniture, but art"
     },
     "products": {
